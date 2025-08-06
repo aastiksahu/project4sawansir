@@ -96,6 +96,7 @@ public class TimetableCtl extends BaseCtl {
 		bean.setExamTime(DataUtility.getString(request.getParameter("examTime")));
 		bean.setExamDate(DataUtility.getDate(request.getParameter("examDate")));
 		bean.setCourseId(DataUtility.getLong(request.getParameter("courseId")));
+		System.out.println("courseId "+ bean.getCourseId());
 		bean.setSubjectId(DataUtility.getLong(request.getParameter("subjectId")));
 
 		populateDTO(bean, request);

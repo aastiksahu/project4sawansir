@@ -146,7 +146,51 @@ public class FacultyModel {
 
 	public void update(FacultyBean bean) throws ApplicationException, DuplicateRecordException {
 
+		CollegeBean collegeBean = new CollegeBean();
+		CollegeModel collegeModel = new CollegeModel();
+
+		CourseBean courseBean = new CourseBean();
+		CourseModel courseModel = new CourseModel();
+
+		SubjectBean subjectBean = new SubjectBean();
+		SubjectModel subjectModel = new SubjectModel();
+
+		if (bean.getCollegeId() > 0) {
+
+			collegeBean = collegeModel.findByPk(bean.getCollegeId());
+			bean.setCollegeName(collegeBean.getName());
+
+		} else if (bean.getCollegeName() != null && bean.getCollegeName().length() > 0) {
+
+			collegeBean = collegeModel.findByName(bean.getCollegeName());
+			bean.setCollegeId(collegeBean.getId());
+		}
+
+		if (bean.getCourseId() > 0) {
+
+			courseBean = courseModel.findByPk(bean.getCourseId());
+			bean.setCourseName(courseBean.getName());
+
+		} else if (bean.getCourseName() != null && bean.getCourseName().length() > 0) {
+
+			courseBean = courseModel.findByName(bean.getCourseName());
+			bean.setCourseId(courseBean.getId());
+		}
+
+		if (bean.getSubjectId() > 0) {
+
+			subjectBean = subjectModel.findByPk(bean.getSubjectId());
+			bean.setSubjectName(subjectBean.getName());
+
+		} else if (bean.getSubjectName() != null && bean.getSubjectName().length() > 0) {
+
+			subjectBean = subjectModel.findByName(bean.getSubjectName());
+			bean.setSubjectId(subjectBean.getId());
+		}
+		
 		Connection conn = null;
+
+		int pk = 0;
 
 		FacultyBean existBean = findByEmail(bean.getEmail());
 

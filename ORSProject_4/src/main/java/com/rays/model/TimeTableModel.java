@@ -122,6 +122,14 @@ public class TimeTableModel {
 
 	public void update(TimeTableBean bean) throws ApplicationException, DuplicateRecordException {
 
+		CourseModel courseModel = new CourseModel();
+		CourseBean courseBean = courseModel.findByPk(bean.getCourseId());
+		bean.setCourseName(courseBean.getName());
+		
+		SubjectModel subjectModel = new SubjectModel();
+		SubjectBean subjectBean = subjectModel.findByPk(bean.getSubjectId());
+		bean.setSubjectName(subjectBean.getName());
+		
 		Connection conn = null;
 
 		try {

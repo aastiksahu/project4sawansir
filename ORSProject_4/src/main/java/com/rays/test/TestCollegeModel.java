@@ -13,13 +13,13 @@ public class TestCollegeModel {
 
 	public static void main(String[] args) throws Exception {
 
-//		testNextPk();
+		testNextPk();
 //		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testfindByPk();
 //		testfindByName();
-		testsearch();
+//		testsearch();
 //		testlist();
 	}
 

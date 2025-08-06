@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.rays.bean.CollegeBean;
 import com.rays.exception.ApplicationException;
 import com.rays.exception.DatabaseException;
@@ -13,8 +15,13 @@ import com.rays.exception.DuplicateRecordException;
 import com.rays.util.JDBCDataSource;
 
 public class CollegeModel {
+	
+	Logger log = Logger.getLogger(CollegeModel.class);
 
 	public Integer nextPk() throws DatabaseException {
+		
+		log.debug("CollegeModel nextPk() started");
+		
 		Connection conn = null;
 		int pk = 0;
 
@@ -39,6 +46,7 @@ public class CollegeModel {
 
 			JDBCDataSource.closeConnection(conn);
 		}
+		log.debug("CollegeModel nextPk() ended");
 		return pk + 1;
 	}
 
